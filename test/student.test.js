@@ -53,22 +53,22 @@ describe("Student", function () {
   });
 
   describe(".doHomework()", function () {
-    it("accepts an object that includes a `skillLevel` key and marks it as complete (i.e. adds a key of `completed` with a value of `true` to the homework) if the student's skill level is above the inputted homework's `skillLevel`", function () {
+    it("accepts an object that includes a `skillLevel` key and marks it as completed (i.e. adds a key of `completed` with a value of `true` to the homework) if the student's skill level is above the inputted homework's `skillLevel`", function () {
       const student = new Student(...this.properties);
 
       const homework = { title: "Crushing Candy Code", skillLevel: 38 };
       student.doHomework(homework);
 
-      expect(student.assignments[0].complete).to.be.true;
+      expect(student.assignments[0].completed).to.be.true;
     });
 
-    it("marks homework as incomplete (i.e. `complete: false`) if the skillLevel is too high", function () {
+    it("marks homework as incomplete (i.e. `completed: false`) if the skillLevel is too high", function () {
       const student = new Student(...this.properties);
 
       const homework = { title: "OOP Classroom", skillLevel: 47 };
       student.doHomework(homework);
 
-      expect(student.assignments[0].complete).to.be.false;
+      expect(student.assignments[0].completed).to.be.false;
     });
 
     it("adds the homework to the `assignments` array whether or not it is completed", function () {
@@ -81,7 +81,7 @@ describe("Student", function () {
         {
           title: "Crushing Candy Code",
           skillLevel: 38,
-          complete: true,
+          completed: true,
         },
       ]);
     });
@@ -123,14 +123,14 @@ describe("Student", function () {
         {
           title: "OOP Classroom",
           skillLevel: 47,
-          complete: false,
+          completed: false,
         },
       ]);
 
       student.study().study().study().study();
       student.doHomework();
 
-      expect(student.assignments[0].complete).to.be.true;
+      expect(student.assignments[0].completed).to.be.true;
     });
 
     it("if no argument is added, attempts to complete all incomplete homework but it will stay incomplete if `skillLevel` is still not enough", function () {
@@ -143,13 +143,13 @@ describe("Student", function () {
         {
           title: "Capstone Project",
           skillLevel: 90,
-          complete: false,
+          completed: false,
         },
       ]);
 
       student.study().study().study().study();
       student.doHomework();
-      expect(student.assignments[0].complete).to.be.false;
+      expect(student.assignments[0].completed).to.be.false;
     });
   });
 });
