@@ -21,7 +21,7 @@ describe('Computer', function () {
 
     it('should have properties by the same name', function () {
       const computer = new Computer(...this.properties)
-      const [ name, operatingSystem, processor, memory, graphics ] = this.properties
+      const [name, operatingSystem, processor, memory, graphics] = this.properties
 
       expect(computer.name).to.equal(name)
       expect(computer.operatingSystem).to.equal(operatingSystem)
